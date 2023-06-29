@@ -1,12 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:policy_plus/core/helper_class/size_config.dart';
 
-enum Spacing { small, xSmall, medium, xMedium, large, xLarge,xxLarge,xxxLarge }
+enum Spacing {
+  sSmall,
+  small,
+  xSmall,
+  medium,
+  xMedium,
+  large,
+  xLarge,
+  xxLarge,
+  xxxLarge
+}
 
 class SizeHelper {
   static TextStyle textStyleHelper(
-      {required Spacing type, FontWeight? fontWeight, Color? colors}) {
+      {required Spacing type,
+      FontWeight? fontWeight,
+      Color? colors,
+      TextDecoration? textDecoration }) {
     switch (type) {
+       case Spacing.sSmall:
+        return TextStyle(
+            fontSize: SizeConfig.blockSizeHorizontal!*0.6,
+            fontWeight: fontWeight ?? FontWeight.w400,
+            color: colors ?? Colors.black);
       case Spacing.small:
         return TextStyle(
             fontSize: SizeConfig.blockSizeHorizontal!,
@@ -21,7 +39,8 @@ class SizeHelper {
         return TextStyle(
             fontSize: SizeConfig.blockSizeHorizontal! * 3,
             fontWeight: fontWeight ?? FontWeight.w400,
-            color: colors ?? Colors.black);
+            color: colors ?? Colors.black,
+            decoration: textDecoration?? TextDecoration.none);
       case Spacing.xMedium:
         return TextStyle(
             fontSize: SizeConfig.blockSizeHorizontal! * 4,
@@ -37,18 +56,18 @@ class SizeHelper {
             fontSize: SizeConfig.blockSizeHorizontal! * 6,
             fontWeight: fontWeight ?? FontWeight.w400,
             color: colors ?? Colors.black);
-   case Spacing.xxLarge:
+      case Spacing.xxLarge:
         return TextStyle(
             fontSize: SizeConfig.blockSizeHorizontal! * 7,
             fontWeight: fontWeight ?? FontWeight.w400,
-            color: colors ?? Colors.black,height: 1);
-               case Spacing.xxxLarge:
+            color: colors ?? Colors.black,
+            height: 1);
+      case Spacing.xxxLarge:
         return TextStyle(
             fontSize: SizeConfig.blockSizeHorizontal! * 8,
             fontWeight: fontWeight ?? FontWeight.w400,
             color: colors ?? Colors.black,
             height: 1);
-
 
       default:
         return TextStyle(
@@ -80,19 +99,19 @@ class SizeHelper {
   static Widget hSpacing({required Spacing hSpace}) {
     switch (hSpace) {
       case Spacing.small:
-        return SizedBox(height: SizeConfig.blockSizeHorizontal!);
+        return SizedBox(width: SizeConfig.blockSizeHorizontal!);
       case Spacing.xSmall:
-        return SizedBox(height: SizeConfig.blockSizeHorizontal! * 2);
+        return SizedBox(width: SizeConfig.blockSizeHorizontal! * 2);
       case Spacing.medium:
-        return SizedBox(height: SizeConfig.blockSizeHorizontal! * 3);
+        return SizedBox(width: SizeConfig.blockSizeHorizontal! * 3);
       case Spacing.xMedium:
-        return SizedBox(height: SizeConfig.blockSizeHorizontal! * 4);
+        return SizedBox(width: SizeConfig.blockSizeHorizontal! * 4);
       case Spacing.large:
-        return SizedBox(height: SizeConfig.blockSizeHorizontal! * 5);
+        return SizedBox(width: SizeConfig.blockSizeHorizontal! * 5);
       case Spacing.xLarge:
-        return SizedBox(height: SizeConfig.blockSizeHorizontal! * 6);
+        return SizedBox(width: SizeConfig.blockSizeHorizontal! * 6);
       default:
-        return SizedBox(height: SizeConfig.blockSizeHorizontal!);
+        return SizedBox(width: SizeConfig.blockSizeHorizontal!);
     }
   }
 }

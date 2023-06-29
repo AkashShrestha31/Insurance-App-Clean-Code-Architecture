@@ -17,11 +17,13 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp.router(
         title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
         routerDelegate: AppRoute.goRouter.routerDelegate,
         routeInformationProvider: AppRoute.goRouter.routeInformationProvider,
         routeInformationParser: AppRoute.goRouter.routeInformationParser,
         theme: ThemeData(
             useMaterial3: true,
+            
            colorScheme: themeColor,
             brightness: Brightness.light,
             tabBarTheme: ThemeData().tabBarTheme.copyWith(

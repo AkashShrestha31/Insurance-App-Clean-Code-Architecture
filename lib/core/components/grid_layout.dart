@@ -19,8 +19,9 @@ class GridWidget extends StatelessWidget {
       _aspectRatio;
 
   final List<ImageAndIconModel> list;
+  final double? customCellHeight;
 
-  GridWidget({super.key, required this.list});
+  GridWidget({super.key, required this.list,this.customCellHeight});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class GridWidget extends StatelessWidget {
     cellHeight = getScreenHeight(portraitHeight: 0.17, landscapeHeight: 0.48);
     _aspectRatio = _width / cellHeight;
     return SizedBox(
-      height: getHeight(length: list.length),
+      height: customCellHeight?? getHeight(length: list.length),
       child: GridView.builder(
         shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
@@ -46,7 +47,7 @@ class GridWidget extends StatelessWidget {
             return Column(
               children: [
                 list[index].image,
-                Text(list[index].title)
+                Text(list[index].title,textAlign: TextAlign.center,)
               ],
             );
           }),
